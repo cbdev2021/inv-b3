@@ -1,66 +1,116 @@
-import mongoose from 'mongoose';
+import { DataTypes } from 'sequelize';
+import sequelize from '../config/db.js';
 
-const invoiceSchema = mongoose.Schema(
-  {
+const Invoice = sequelize.define('Invoice', {
     invoiceID: {
-      type: Number,
-      required: true,
+        type: DataTypes.INTEGER,
+        allowNull: false,
     },
-    // purchaseId: {
-    //   type: Number,
-    //   required: false,
-    // },
-    // saleId: {
-    //   type: Number,
-    //   required: false,
-    // },
     invoiceType: {
-      type: String,
-      required: true,
+        type: DataTypes.STRING,
+        allowNull: false,
     },
     idUsuario: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User', // Hace referencia al modelo de usuario
-      required: true,
+        type: DataTypes.INTEGER,
+        allowNull: false,
     },
     dateIssue: {
-      type: Date,
-      required: true,
+        type: DataTypes.DATE,
+        allowNull: false,
     },
     subTotal: {
-      type: Number,
-      required: false,
+        type: DataTypes.FLOAT,
+        allowNull: false,
     },
     taxes: {
-      type: Number,
-      required: false,
+        type: DataTypes.FLOAT,
+        allowNull: false,
     },
-
-    //Venta
     customer: {
-      type: String,
-      required: false,
+        type: DataTypes.STRING,
+        allowNull: true,
     },
     paymentSell: {
-      type: String,
-      required: false,
+        type: DataTypes.STRING,
+        allowNull: true,
     },
-
-    //Compra
     provider: {
-      type: String,
-      required: false,
+        type: DataTypes.STRING,
+        allowNull: true,
     },
     paymentBuy: {
-      type: String,
-      required: false,
+        type: DataTypes.STRING,
+        allowNull: true,
     },
-  },
-  {
+}, {
     timestamps: true,
-  }
-);
-
-const Invoice = mongoose.model('Invoice', invoiceSchema);
+});
 
 export default Invoice;
+
+// import mongoose from 'mongoose';
+
+// const invoiceSchema = mongoose.Schema(
+//   {
+//     invoiceID: {
+//       type: Number,
+//       required: true,
+//     },
+//     // purchaseId: {
+//     //   type: Number,
+//     //   required: false,
+//     // },
+//     // saleId: {
+//     //   type: Number,
+//     //   required: false,
+//     // },
+//     invoiceType: {
+//       type: String,
+//       required: true,
+//     },
+//     idUsuario: {
+//       type: mongoose.Schema.Types.ObjectId,
+//       ref: 'User', // Hace referencia al modelo de usuario
+//       required: true,
+//     },
+//     dateIssue: {
+//       type: Date,
+//       required: true,
+//     },
+//     subTotal: {
+//       type: Number,
+//       required: false,
+//     },
+//     taxes: {
+//       type: Number,
+//       required: false,
+//     },
+
+//     //Venta
+//     customer: {
+//       type: String,
+//       required: false,
+//     },
+//     paymentSell: {
+//       type: String,
+//       required: false,
+//     },
+
+//     //Compra
+//     provider: {
+//       type: String,
+//       required: false,
+//     },
+//     paymentBuy: {
+//       type: String,
+//       required: false,
+//     },
+//   },
+//   {
+//     timestamps: true,
+//   }
+// );
+
+// const Invoice = mongoose.model('Invoice', invoiceSchema);
+
+// export default Invoice;
