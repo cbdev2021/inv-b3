@@ -15,12 +15,13 @@ const router = express.Router();
 // router.post('/add-invoice', protect, addInvoice);
 router.post('/add-invoice', addInvoice);
 
-
 router.put('/update-invoice/:id', protect, updateInvoice);
 router.delete('/delete-invoice/:id', protect, deleteInvoice);
 router.get('/get-invoice/:id', protect, getInvoice);
 router.get('/get-invoices/:idUsuario', protect, getInvoicesByUserId);
-router.get('/generate-id/:invoiceType', protect, generateId);
+
+// router.get('/generate-id/:invoiceType', protect, generateId);
+router.get('/generate-id/:invoiceType',  generateId);
 
 export default router;
 

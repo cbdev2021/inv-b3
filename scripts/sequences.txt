@@ -1,0 +1,18 @@
+CREATE TABLE sequences (
+    id VARCHAR(50),
+    sequence_value INT,
+    PRIMARY KEY (id)
+);
+
+INSERT INTO sequences (id, sequence_value) VALUES ('sequenceProductId', 769);
+
+INSERT INTO sequences (id, sequence_value) VALUES ('sequenceInvoiceId', 77);
+
+INSERT INTO sequences (id, sequence_value) VALUES ('sequenceSaleId', 2162);
+
+INSERT INTO sequences (id, sequence_value) VALUES ('sequencePurchaseId', 1240);
+
+INSERT INTO sequences (id, sequence_value) VALUES ('sequenceProdSalesId', 4000);
+
+INSERT INTO sequences (id, sequence_value) VALUES ('sequenceProdPurchaseId', 3000);
+
