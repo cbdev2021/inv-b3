@@ -13,13 +13,18 @@ const router = express.Router();
 
 // Rutas para productos
 // router.post('/products/add', protect, addProduct);
-router.post('/products/add-product',  addProduct);
+// router.delete('/products/delete/:id', protect, deleteProduct);
+// router.get('/products/get/:id', protect, getProduct);
+// router.get('/products/get-by-user/:idUsuario', protect, getProductByUserId);
+// router.put('/products/update-amount/:productId', protect, updateProductAmount);
 
-router.put('/products/update/:id', protect, updateProduct);
-router.delete('/products/delete/:id', protect, deleteProduct);
-router.get('/products/get/:id', protect, getProduct);
-router.get('/products/get-by-user/:idUsuario', protect, getProductByUserId);
-router.put('/products/update-amount/:productId', protect, updateProductAmount);
+router.post('/add-product', addProduct);
+router.put('/update-product/:id', updateProduct);
+router.delete('/delete-product/:id', deleteProduct);
+router.get('/get-product/:id', getProduct);
+router.get('/get-products/:idUsuario', getProductByUserId);
+// router.put('/update-product-amount/:productId', , updateProductAmount);
+router.put('/update-product-amount/:productId', updateProductAmount);
 
 export default router;
 
