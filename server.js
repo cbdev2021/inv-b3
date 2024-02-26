@@ -7,8 +7,8 @@ import cookieParser from 'cookie-parser';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
 import userRoutes from './routes/userRoutes.js';
-import addRegisterRoutes from './routes/addRegisterRoutes.js';
-import typeValuesRoutes from './routes/typeValuesRoutes.js';
+// import addRegisterRoutes from './routes/addRegisterRoutes.js';
+// import typeValuesRoutes from './routes/typeValuesRoutes.js';
 import productsRoutes from './routes/productsRoutes.js';
 import invoiceRoutes from './routes/invoiceRoutes.js';
 import productsInvoiceRoutes from './routes/productInvoiceRoutes.js';
@@ -69,8 +69,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use('/api/users', userRoutes);
-app.use('/api/registers', addRegisterRoutes); 
-app.use('/api/type-value', typeValuesRoutes); 
+// app.use('/api/registers', addRegisterRoutes); 
+// app.use('/api/type-value', typeValuesRoutes); 
 app.use('/api/products', productsRoutes); 
 app.use('/api/invoices', invoiceRoutes); 
 app.use('/api/products-invoices', productsInvoiceRoutes); 
