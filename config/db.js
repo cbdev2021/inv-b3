@@ -3,6 +3,7 @@ import { Sequelize } from 'sequelize';
 const sequelize = new Sequelize('bf4i4aiupjmeu75cexyd', 'utjhsbejjehli2uf', 'jvc9UkL8YeyokqxKMPLW', {
   host: 'bf4i4aiupjmeu75cexyd-mysql.services.clever-cloud.com',
   dialect: 'mysql',
+  dialectModule: require('mysql2') //prueba
 });
 
 const db = {};
