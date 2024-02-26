@@ -69,7 +69,14 @@ const getUserProfile = asyncHandler(async (req, res) => {
 });
 
 const updateUserProfile = asyncHandler(async (req, res) => {
-  const user = await User.findByPk(req.user.id);
+  // const user = await User.findByPk(req.user.id);
+
+  // const user = await User.findByPk(req.id); //no funciona
+
+  // await ProductInvoice.destroy({ where: { id: productId } });
+
+  const user = await User.findOne({ where: { id: req.body.id  } });
+                                              //id: req.id //mal request!!
 
   if (user) {
     user.name = req.body.name || user.name;

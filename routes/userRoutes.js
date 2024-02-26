@@ -17,7 +17,8 @@ router.post('/logout', logoutUser);
 router
   .route('/profile')
   .get(protect, getUserProfile)
-  .put(protect, updateUserProfile);
+  // .put(protect, updateUserProfile);
+  .put(updateUserProfile);
 
 router.get('/hola', getHola);
 
