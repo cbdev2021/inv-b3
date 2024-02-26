@@ -11,7 +11,7 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 // Sincronizar los modelos con la base de datos
-db.sequelize.sync({ force: true }); // Esta opción fuerza la creación de las tablas
+//db.sequelize.sync({ force: true }); // Esta opción fuerza la creación de las tablas
 
 
 export default sequelize; 

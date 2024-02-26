@@ -5,6 +5,8 @@ import {
   deleteProductInvoice,
   getProductInvoice,
   getProductInvoiceByUserId,
+  getProductByUserIdInvoice,
+  deleteProductsByInvoiceID,
 } from '../controllers/productInvoiceController.js';
 import { protect } from '../middleware/authMiddleware.js';
 
@@ -17,10 +19,13 @@ const router = express.Router();
 // router.get('/product-invoices/get-by-user/:idUsuario', protect, getProductInvoiceByUserId);
 
 router.post('/add-product-invoice',  addProductInvoice);
-router.put('/products-invoices/update/:id',   updateProductInvoice);
-router.delete('/products-invoices/delete/:id',   deleteProductInvoice);
-router.get('/products-invoices/get/:id',   getProductInvoice);
-router.get('/products-invoices/get-by-user/:idUsuario',   getProductInvoiceByUserId);
+router.put('/update-product-invoice/:id', updateProductInvoice);
+// router.delete('/delete-product-invoice/:id', deleteProductInvoice); invoiceID
+router.delete('/delete-product-invoice/:invoiceID', deleteProductInvoice); 
+router.get('/get-product-invoice/:id', getProductInvoice);
+router.get('/get-products-invoice/:idUsuario', getProductByUserIdInvoice);
+router.delete('/delete-products-invoice-id/:invoiceID', deleteProductsByInvoiceID);
+
 
 export default router;
 

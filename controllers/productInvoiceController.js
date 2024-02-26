@@ -102,12 +102,59 @@ const getProductInvoiceByUserId = asyncHandler(async (req, res) => {
   }
 });
 
+const getProductByUserIdInvoice = asyncHandler(async (req, res) => {
+  const idUsuario = req.params.idUsuario;
+
+  try {
+    // const productInvoice = await ProductInvoice.find({ idUsuario: idUsuario }); //no funcionó
+    //const productInvoice = await ProductInvoice.findAll({ idUsuario: idUsuario }); //todos los registros y no filtra    
+    const productInvoice = await ProductInvoice.findAll({ where: { idUsuario: idUsuario } });
+
+
+    if (productInvoice) {
+      res.json(productInvoice);
+    } else {
+      res.status(404);
+      throw new Error('No se encontraron ProductInvoice para este usuario');
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Error al obtener los ProductInvoice', error: error.message });
+  }
+});
+
+const deleteProductsByInvoiceID = asyncHandler(async (req, res) => {
+  const invoiceID = req.params.invoiceID;
+  // const userId = req.user._id;  // like spring boot
+
+  try {
+    // const deletedProducts = await ProductInvoice.deleteMany({ idUsuario: userId, invoiceID: invoiceID });
+    // const deletedProducts = await ProductInvoice.deleteMany({ invoiceID: invoiceID }); //no funciona delete many not is a function
+    // const deletedProducts = await ProductInvoice.deleteMany({where: { invoiceID: invoiceID }});
+      const deletedProducts = await ProductInvoice.destroy({ where: { invoiceID: invoiceID } });
+
+ 
+    // if (deletedProducts.deletedCount > 0) {
+    if (deletedProducts > 0) {      
+      // res.json({ message: `Se eliminaron ${deletedProducts.deletedCount} ProductInvoice con invoiceID ${invoiceID}` });
+      res.json({ message: `Se eliminaron ${deletedProducts} ProductInvoice con invoiceID ${invoiceID}` });    
+    } else {
+      res.status(404);
+      throw new Error(`No se encontraron ProductInvoice con invoiceID ${invoiceID}`);
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Error al eliminar ProductInvoice', error: error.message });
+  }
+});
+
+
 export {
   addProductInvoice,
   updateProductInvoice,
   deleteProductInvoice,
   getProductInvoice,
   getProductInvoiceByUserId,
+  getProductByUserIdInvoice,
+  deleteProductsByInvoiceID,
 };
 
  
