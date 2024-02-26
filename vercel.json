@@ -3,7 +3,12 @@
   "builds": [
     {
       "src": "server.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "dependencies": {
+          "mysql2": "3.9.2"
+        }
+      }
     }
   ],
   "routes": [
@@ -22,4 +27,3 @@
     "DB_DIALECT": "mysql"
   }
 }
- 
