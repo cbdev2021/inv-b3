@@ -22,8 +22,6 @@ const Sequence = sequelize.define('Sequence', {
 export default Sequence;
 
 
-
-
 // import { DataTypes } from 'sequelize';
 // import sequelize from '../config/db.js'; // Importa la instancia de Sequelize
 
