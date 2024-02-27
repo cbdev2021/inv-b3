@@ -32,7 +32,7 @@ const allowedOrigins = [
   'https://regbills-f1.vercel.app',
   'https://regbills-mui-f1.vercel.app',
   'https://inv-f1.vercel.app',
-  'https://inv-f3.vercel.app/',  //2do probado
+  'https://inv-f3.vercel.app',  //2do probado
   // Añadir más URLs permitidas según sea necesario
 ];
 
@@ -60,7 +60,7 @@ app.use(cors({
     'https://mern-f1.vercel.app',
     'https://regbills-mui-f1.vercel.app',
     'https://inv-f1.vercel.app/',
-    'https://inv-f3.vercel.app/',
+    'https://inv-f3.vercel.app',
   ],
   methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
 }));
