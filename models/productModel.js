@@ -2,15 +2,23 @@ import { DataTypes } from 'sequelize';
 import sequelize from '../config/db.js'; // Importa la instancia de Sequelize
 
 const Product = sequelize.define('Product', { // Utiliza sequelize.define para definir el modelo
+  id: {
+    type: DataTypes.INTEGER,
+    allowNull: true,  //ya que la base lo creará
+    primaryKey: true,
+    autoIncrement: true,
+  },
   idUsuario: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
   productId: {
     type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true,
+    allowNull: true,
+
+    //allowNull: false,
+    // primaryKey: true,
+    // autoIncrement: true,
   },
   name: {
     type: DataTypes.STRING,

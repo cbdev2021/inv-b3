@@ -12,6 +12,8 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
+//db.sequelize.sync({ force: true }); // Esta opción fuerza la creación de las tablas
+
 export default sequelize;
 
 
