@@ -58,6 +58,7 @@ app.use(cors({
     'https://mern-f1.onrender.com',
     'https://mern-f1.vercel.app',
     'https://regbills-mui-f1.vercel.app',
+    'https://inv-f1.vercel.app/',
     'https://inv-f1.vercel.app/'
   ],
   methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
