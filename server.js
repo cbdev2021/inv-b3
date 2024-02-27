@@ -31,7 +31,8 @@ const allowedOrigins = [
   'http://localhost:3000',
   'https://regbills-f1.vercel.app',
   'https://regbills-mui-f1.vercel.app',
-  'https://inv-f1.vercel.app'
+  'https://inv-f1.vercel.app',
+  'https://inv-f3.vercel.app/',  //2do probado
   // Añadir más URLs permitidas según sea necesario
 ];
 
