@@ -1,9 +1,10 @@
 import { Sequelize } from 'sequelize';
+import mysql2 from 'mysql2'; // Importa mysql2 utilizando la sintaxis de importación
 
 const sequelize = new Sequelize('bf4i4aiupjmeu75cexyd', 'utjhsbejjehli2uf', 'jvc9UkL8YeyokqxKMPLW', {
   host: 'bf4i4aiupjmeu75cexyd-mysql.services.clever-cloud.com',
   dialect: 'mysql',
-  dialectModule: require('mysql2') //prueba
+  dialectModule: mysql2 // Utiliza la variable mysql2 directamente en lugar de require
 });
 
 const db = {};
@@ -11,11 +12,29 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-// Sincronizar los modelos con la base de datos
-//db.sequelize.sync({ force: true }); // Esta opción fuerza la creación de las tablas
+export default sequelize;
 
 
-export default sequelize; 
+
+
+// import { Sequelize } from 'sequelize';
+
+// const sequelize = new Sequelize('bf4i4aiupjmeu75cexyd', 'utjhsbejjehli2uf', 'jvc9UkL8YeyokqxKMPLW', {
+//   host: 'bf4i4aiupjmeu75cexyd-mysql.services.clever-cloud.com',
+//   dialect: 'mysql',
+//   dialectModule: require('mysql2') //prueba
+// });
+
+// const db = {};
+
+// db.Sequelize = Sequelize;
+// db.sequelize = sequelize;
+
+// // Sincronizar los modelos con la base de datos
+// //db.sequelize.sync({ force: true }); // Esta opción fuerza la creación de las tablas
+
+
+// export default sequelize; 
 
 
 
