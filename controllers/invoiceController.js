@@ -29,7 +29,7 @@ const addInvoice = asyncHandler(async (req, res) => {
                 return;
             }
 
-            //sequence.sequence_value += 1;  //mysql
+            sequence.sequence_value += 1;  //mysql
 
             await sequence.save();
 
@@ -165,8 +165,9 @@ const generateId = async (req, res) => {
             throw new Error('Secuencia no encontrada');
         }
 
-        // Incrementa el valor de la secuencia y guárdalo
-        //sequence.sequence_value += 1; //en mysql
+        // Incrementa el valor de la secuencia y lo guárda
+        //sequence.sequence_value += 1; 
+        //en mysql 
 
         await sequence.save();
 
