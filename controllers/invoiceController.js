@@ -29,7 +29,8 @@ const addInvoice = asyncHandler(async (req, res) => {
                 return;
             }
 
-            sequence.sequence_value += 1;
+            //sequence.sequence_value += 1;  //mysql
+
             await sequence.save();
 
             invoiceID = sequence.sequence_value;
@@ -127,10 +128,14 @@ const getInvoice = asyncHandler(async (req, res) => {
 });
 
 const getInvoicesByUserId = asyncHandler(async (req, res) => {
-    const userId = req.params.idUsuario;
+    const idUsuario = req.params.idUsuario;
 
     try {
-        const invoices = await Invoice.find({ idUsuario: userId });
+        // const invoices = await Invoice.find({ idUsuario: userId }); // error : find is not a function!
+        // const invoices = await Invoice.findOne({ idUsuario: userId }); // error ya que solo retorna un objeto, al parecer el primer objero!!
+        // const invoices = await Invoice.findAll({ idUsuario: userId });
+        const invoices = await Invoice.findAll({ where: { idUsuario: idUsuario } }); 
+
 
         res.json(invoices);
     } catch (error) {
@@ -140,35 +145,36 @@ const getInvoicesByUserId = asyncHandler(async (req, res) => {
 
 const generateId = async (req, res) => {
     const { invoiceType } = req.params;
-  
+
     try {
-      let sequenceId;
-      if (invoiceType === "Purchase") {
-        sequenceId = "sequencePurchaseId"; // Cambiar este valor según corresponda, por ejemplo, "sequenceProdPurchaseId"
-      } else if (invoiceType === "Sales") {
-        sequenceId = "sequenceSaleId"; // Cambiar este valor según corresponda, por ejemplo, "sequenceInvoiceId"
-      } else {
-        res.status(400);
-        throw new Error('Tipo de factura no válido');
-      }
-  
-      // Busca la secuencia en la base de datos
-      const sequence = await Sequence.findByPk(sequenceId);
-  
-      if (!sequence) {
-        res.status(404);
-        throw new Error('Secuencia no encontrada');
-      }
-  
-      // Incrementa el valor de la secuencia y guárdalo
-      sequence.sequence_value += 1;
-      await sequence.save();
-  
-      res.json({ sequence_value: sequence.sequence_value });
+        let sequenceId;
+        if (invoiceType === "Purchase") {
+            sequenceId = "sequencePurchaseId"; // Cambiar este valor según corresponda, por ejemplo, "sequenceProdPurchaseId"
+        } else if (invoiceType === "Sales") {
+            sequenceId = "sequenceSaleId"; // Cambiar este valor según corresponda, por ejemplo, "sequenceInvoiceId"
+        } else {
+            res.status(400);
+            throw new Error('Tipo de factura no válido');
+        }
+
+        // Busca la secuencia en la base de datos
+        const sequence = await Sequence.findByPk(sequenceId);
+
+        if (!sequence) {
+            res.status(404);
+            throw new Error('Secuencia no encontrada');
+        }
+
+        // Incrementa el valor de la secuencia y guárdalo
+        //sequence.sequence_value += 1; //en mysql
+
+        await sequence.save();
+
+        res.json({ sequence_value: sequence.sequence_value });
     } catch (error) {
-      res.status(500).json({ message: 'Error al obtener la secuencia', error: error.message });
+        res.status(500).json({ message: 'Error al obtener la secuencia', error: error.message });
     }
-  };  
+};
 
 export {
     addInvoice,
