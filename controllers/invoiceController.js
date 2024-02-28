@@ -98,14 +98,18 @@ const updateInvoice = asyncHandler(async (req, res) => {
 
 const deleteInvoice = asyncHandler(async (req, res) => {
     try {
-        const invoice = await Invoice.findById(req.params.id);
+        // const invoice = await Invoice.findById(req.params.id); // is not a function         
+        // const invoice = await Invoice.findByPk(req.params.id);  //funciona pero más útil para updates
+        // if (!invoice) {
+        //     res.status(404);
+        //     throw new Error('Factura no encontrada');
+        // }
 
-        if (!invoice) {
-            res.status(404);
-            throw new Error('Factura no encontrada');
-        }
+        // await invoice.remove();  //// is not a function 
 
-        await invoice.remove();
+        const id = req.params.id;
+        await Invoice.destroy({ where: { id: id } });
+
         res.json({ message: 'Factura eliminada con éxito' });
     } catch (error) {
         res.status(500).json({ message: 'Error al eliminar la factura', error: error.message });
