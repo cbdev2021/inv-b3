@@ -16,3 +16,12 @@ INSERT INTO sequences (id, sequence_value) VALUES ('sequenceProdSalesId', 4000);
 
 INSERT INTO sequences (id, sequence_value) VALUES ('sequenceProdPurchaseId', 3000);
 
+--- trigger ---
+DELIMITER $$
+CREATE TRIGGER duplicate_id_trigger BEFORE INSERT ON Products
+FOR EACH ROW
+BEGIN
+    SET NEW.productId = NEW.id;
+END;
+$$
+DELIMITER ;
