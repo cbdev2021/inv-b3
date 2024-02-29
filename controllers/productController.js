@@ -57,11 +57,13 @@ const updateProduct = asyncHandler(async (req, res) => {
 
 // Función para eliminar un producto por su ID
 const deleteProduct = asyncHandler(async (req, res) => {
-  const productId = req.params.id;
+  // const productId = req.params.id;
+  const id = req.params.id;
 
   try {
     // Elimina el producto por su ID
-    await Product.destroy({ where: { productId: productId } });
+    // await Product.destroy({ where: { productId: productId } });
+    await Product.destroy({ where: { id: id } });
 
     res.json({ message: 'Producto eliminado con éxito' });
   } catch (error) {

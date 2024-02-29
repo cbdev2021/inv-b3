@@ -14,9 +14,10 @@ const ProductInvoice = sequelize.define('ProductInvoice', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  productId: {
+  productId: {    // error    :    "Field 'productId' doesn't have a default value"
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
+    defaultValue: 0
   },
   name: {
     type: DataTypes.STRING,
